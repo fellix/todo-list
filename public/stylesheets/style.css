@@ -1,0 +1,188 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-weight: inherit;
+  font-style: inherit;
+  font-size: 100%;
+  font-family: inherit;
+  vertical-align: baseline;
+}
+body {
+  line-height: 1;
+  color: black;
+  background: white;
+}
+ol, ul {
+  list-style: none;
+}
+a img {
+  border: none;
+}
+
+html {
+  background: #eeeeee;
+}
+  body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.4em;
+    background: #eeeeee;
+    color: #333333;
+  }
+
+#task_app {
+  width: 480px;
+  margin: 0 auto 40px;
+  background: white;
+  padding: 20px;
+  -moz-box-shadow: rgba(0, 0, 0, 0.2) 0 5px 6px 0;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0 5px 6px 0;
+  -o-box-shadow: rgba(0, 0, 0, 0.2) 0 5px 6px 0;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 5px 6px 0;
+}
+  #task_app h1 {
+    font-size: 36px;
+    font-weight: bold;
+    text-align: center;
+    padding: 20px 0 30px 0;
+    line-height: 1;
+  }
+
+.form {
+	float: left;
+	position: relative;
+	list-style: none;
+}
+.form input {
+    width: 466px;
+    font-size: 24px;
+    font-family: inherit;
+    line-height: 1.4em;
+    border: 0;
+    outline: none;
+    padding: 6px;
+    border: 1px solid #999999;
+    -moz-box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset;
+    -o-box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset;
+    box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset;
+  }
+
+.form input[type="submit"]{
+	font-weight: bold;
+		color: #e7e5e5;
+		text-decoration: none;
+		display: block;
+		padding:  8px 20px;
+		margin: 0;
+		-webkit-border-radius: 1.6em;
+		-moz-border-radius: 1.6em;
+		text-shadow: 0 1px 1px rgba(0, 0, 0, .3);
+	width: 150px;
+	background: #d1d1d1; /* for non-css3 browsers */
+		filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#ebebeb', endColorstr='#a1a1a1'); /* for IE */
+		background: -webkit-gradient(linear, left top, left bottom, from(#ebebeb), to(#a1a1a1)); /* for webkit browsers */
+		background: -moz-linear-gradient(top,  #ebebeb,  #a1a1a1); /* for firefox 3.6+ */
+
+		color: #444;
+		border-top: solid 1px #f8f8f8;
+		-webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .2);
+		-moz-box-shadow: 0 1px 1px rgba(0, 0, 0, .2);
+		box-shadow: 0 1px 1px rgba(0, 0, 0, .2);
+		text-shadow: 0 1px 0 rgba(255, 255, 255, .8);
+}
+
+.form input::-webkit-input-placeholder {
+      font-style: italic;
+    }
+.form span {
+    position: absolute;
+    z-index: 999;
+    width: 170px;
+    left: 50%;
+    margin-left: -85px;
+  }
+
+#task_lists {
+  margin-top: 10px;
+}
+  #task_lists li {
+    padding: 12px 20px 11px 0;
+    position: relative;
+    font-size: 24px;
+    line-height: 1.1em;
+    border-bottom: 1px solid #cccccc;
+  }
+  #task_lists li:after {
+      content: "\0020";
+      display: block;
+      height: 0;
+      clear: both;
+      overflow: hidden;
+      visibility: hidden;
+    }
+    #task_lists li.editing {
+      padding: 0;
+      border-bottom: 0;
+    }
+  #task_lists .editing .display,
+  #task_lists .edit {
+    display: none;
+  }
+    #task_lists .editing .edit {
+      display: block;
+    }
+    #task_lists .editing input {
+      width: 444px;
+      font-size: 24px;
+      font-family: inherit;
+      margin: 0;
+      line-height: 1.6em;
+      border: 0;
+      outline: none;
+      padding: 10px 7px 0px 27px;
+      border: 1px solid #999999;
+      -moz-box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset;
+      -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset;
+      -o-box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset;
+      box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset;
+    }
+  #task_lists .check {
+    position: relative;
+    top: 9px;
+    margin: 0 10px 0 7px;
+    float: left;
+  }
+  #task_lists .done .todo-content {
+    text-decoration: line-through;
+    color: #777777;
+  }
+  #task_lists .todo-destroy {
+    position: absolute;
+    right: 5px;
+    top: 14px;
+    display: none;
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    background: url(destroy.png) no-repeat 0 0;
+  }
+    #task_lists li:hover .todo-destroy {
+      display: block;
+    }
+    #task_lists .todo-destroy:hover {
+      background-position: 0 -20px;
+    }
+
+a.small{
+	font-size: 12px;
+}
