@@ -1,0 +1,5 @@
+= simple_form_for [@task_list, @task], html: { class: :form } do |f|
+  = f.input :task_list_id,as: :hidden
+  = f.input :title, label: "New Task", input_html: { id: "task_title_#{@task.task_list_id}" }
+  = f.submit "Add", id: "task_submit_#{@task_list.id}", class: :submit_task
+  = link_to "I've finished adding tasks", close_task_form_path(@task_list), remote: true

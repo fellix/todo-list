@@ -1,8 +1,13 @@
 TodoList::Application.routes.draw do
   root to: "home#index"
   
-  resources :task_lists
-  resources :tasks
+  resources :task_lists do
+    resources :tasks
+  end
+  
+  controller :tasks do
+    match 'task_lists/:task_list_id/close' => :close, as: :close_task_form
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

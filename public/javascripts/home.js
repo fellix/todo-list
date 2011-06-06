@@ -18,8 +18,10 @@ $(function(){
 		events:{
 			"click a#new_task_list": "renderForm",
 			"click a#done_task_list": "closeForm",
-			"submit form#new_task_list": "createTaskList"
+			"click a.done_task": "closeForm",
+			"submit form#new_task_list": "createTaskList",
 		},
+		
 		initialize: function(){
 			_.bindAll(this, 'addOne', 'addAll');
 			
@@ -28,6 +30,13 @@ $(function(){
 			TaskLists.bind('all', this.render);
 			
 			TaskLists.fetch();
+			
+			Tasks.bind('add', this.addTask);
+			Tasks.bind('refresh', this.addTasks);
+			Tasks.bind('all', this.renderTask);
+			
+			Tasks.fetch();
+			
 		},
 		renderForm: function(){
 			var task_form = new NewTaskListForm;
@@ -57,6 +66,14 @@ $(function(){
 			var params = this.newAttributes(e);
 			TaskLists.create(params);
 			$(e.currentTarget).clearForm();
+		},
+		addTask: function(task){
+			var view = new TaskView({model: task});
+			this.$("#tasks_"+task.task_list_id).append(view.render().el);
+		},
+		
+		addTasks: function(){
+			Tasks.each(this.addTask);
 		}
 	
 	});

@@ -1,4 +1,5 @@
 #task_app
+  #wheel
   %h1 Welcome the Todo-list
   %p 1) Create a task list
   %p 2) Create the tasks and attack to the lists
@@ -13,8 +14,10 @@
 %script{type: "text/html", id: "list_template"}
   = link_to "{{title}}", "#", id: "list_{{id}}"
   %br
-  - id = "{{id}}"
-  = link_to "Add task", "#", id: "add_task_#{id}", class: :small
+  - id = "{{id}}".html_safe
+  = link_to "Add task", "/task_lists/#{id}/tasks/new", id: "add_task_#{id}", class: "small", remote: true
+  %br
+  %div{id: "new_task_form_{{id}}"}
 
 
 %script{type: "text/template", id: "new_list_template"}
@@ -25,8 +28,5 @@
   = link_to "I've finished adding lists", "#", id: :done_task_list, class: :btn
   %br
 
-%script{type: "text/template", id:"new_task_template"}
-  - @task = Task.new
-  = simple_form_for @task, html: { class: :form } do |f|
-    = f.input :task_list_id, input_html: { value: id }, as: :hidden
-    = f.input :title, label: "New Task", input_html: { id: "task_title_{{id}}" }
+  %script{type: "text/html", id: "task_template"}
+    = link_to "{{title}}", "#", id: "task_{{id}}"
